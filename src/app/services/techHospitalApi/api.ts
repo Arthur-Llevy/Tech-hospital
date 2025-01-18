@@ -31,4 +31,17 @@ const getAllDaysAvaiable = async (id: number) => {
     return result;
 }
 
-export { getAllAppointments, getAllDoctors, getAllDaysAvaiable };
+const administratorLogin = async (user: string, password: string) => {
+    const result = await api.post("/administrators/login", {
+        user, 
+        password
+    })
+
+    if (result.status !== 500){
+        return result.data;
+    }
+
+    return result;
+}
+
+export { getAllAppointments, getAllDoctors, getAllDaysAvaiable, administratorLogin };
