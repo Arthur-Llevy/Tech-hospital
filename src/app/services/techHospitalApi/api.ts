@@ -11,4 +11,24 @@ const getAllAppointments = async (id: number) => {
     return result;
 }
 
-export { getAllAppointments };
+const getAllDoctors = async () => {
+    const result = await api.get(`/doctors/`);
+
+    if (result.status !== 500) {
+        return result.data;
+    } 
+
+    return result;
+}
+
+const getAllDaysAvaiable = async (id: number) => {
+    const result = await api.get(`/doctors-available-days/`);
+
+    if (result.status !== 500) {
+        return result.data;
+    } 
+
+    return result;
+}
+
+export { getAllAppointments, getAllDoctors, getAllDaysAvaiable };
