@@ -46,7 +46,7 @@ export default function FindExam(){
                                 <h2 className="text-2xl font-bold">Dados pessoais</h2>
                                 <span><span className="font-bold">Nome:</span> {appointment.patient.name}</span>
                                 <span><span className="font-bold">CPF:</span> {appointment.patient.cpf}</span>
-                                <span><span className="font-bold">Nome:</span> {appointment.patient.gender}</span>
+                                <span><span className="font-bold">Gênero:</span> {appointment.patient.gender === 0 ? "Masculino" : "Feminino"}</span>
                                 <span><span className="font-bold">Idade:</span> {appointment.patient.age}</span>
                                 <span><span className="font-bold">Data de nascimento:</span> {formatDateTimeWithSlashes(appointment.patient.birth_Date)}</span>
                             </CardContent>

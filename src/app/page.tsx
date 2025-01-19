@@ -19,7 +19,7 @@ export default function Home() {
         <Link href="/findAppointment"><Button className="w-52 h-14 font-bold text-2xl">Consulta</Button></Link>
         <Link href="/calendar"><Button className="w-52 h-14 font-bold text-2xl">Calendário</Button></Link>
         <Link href="/administratorLogin"><Button className="w-52 h-14 font-bold text-2xl">Administração</Button></Link>
-        <Link href="#"><Button className="w-52 h-14 font-bold text-2xl">Médico</Button></Link>
+        <Link href="/doctorLogin"><Button className="w-52 h-14 font-bold text-2xl">Médico</Button></Link>
         {isClient && cookies.token !== undefined && cookies.token !== "" && 
           <Link href="#"><Button className="w-52 h-14 font-bold text-2xl">Marcações</Button></Link>
         }

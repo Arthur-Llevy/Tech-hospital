@@ -88,4 +88,34 @@ const createNewAppointment = async (token: string, isPatientAlreadyRegistredd: b
     }
 }
 
-export { getAllAppointments, getAllDoctors, getAllDaysAvaiable, administratorLogin, getPatientByCpf, createNewAppointment };
+const doctorLogin = async (user: string, password: string) => {
+    const result = await api.post("/doctors/login", {
+        user, 
+        password
+    })
+
+    if (result.status !== 500){
+        return result.data;
+    }
+    return result;
+}
+
+const registerNewAvailableDay = async (token: string, data: any) => {
+    const result = await api.post("doctors-available-days", {
+        date: data.date,
+        doctor_Id: data.doctor_Id,
+        arrival_Time: data.arrival_Time,
+        departure_Time: data.departure_Time
+    }, {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+
+    if (result.status !== 500){
+        return result.data;
+    }
+    return result;
+}
+
+export { getAllAppointments, getAllDoctors, getAllDaysAvaiable, administratorLogin, getPatientByCpf, createNewAppointment, doctorLogin, registerNewAvailableDay };
