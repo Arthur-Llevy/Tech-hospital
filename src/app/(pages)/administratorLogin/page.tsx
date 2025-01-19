@@ -39,6 +39,7 @@ export default function AdministratorLogin() {
             const result = await administratorLogin(values.user, values.password);
             if ("Token" in result) {
                 setCookies("token", result.Token);
+                location.href = "/";
             }
         } catch (error) {
             console.log(error);
