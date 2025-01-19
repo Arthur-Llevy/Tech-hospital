@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useCookies } from "react-cookie"
 import { Card } from "@/components/ui/card"
+import Link from "next/link"
 
 export default function AdministratorLogin() {
     const [, setCookies] = useCookies(["token"]);
@@ -38,8 +39,11 @@ export default function AdministratorLogin() {
         try {
             const result = await administratorLogin(values.user, values.password);
             if ("Token" in result) {
-                setCookies("token", result.Token);
-                location.href = "/";
+                setCookies("token", result.Token, {
+                    path: "/",
+                    maxAge: 3600
+                });
+                location.href = "/createAppointment";
             }
         } catch (error) {
             console.log(error);
@@ -48,6 +52,7 @@ export default function AdministratorLogin() {
 
     return (
         <div>
+            <Link href="/"><Button className="m-8 w-28 h-12 font-bold text-sm">Voltar</Button></Link>   
             <Card className="w-11/12 m-auto p-4 mt-10">
                 <h1 className="text-3xl font-bold pb-4">Login</h1>
                 <Form {...form}>

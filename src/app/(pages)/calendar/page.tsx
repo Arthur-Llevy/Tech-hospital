@@ -23,7 +23,7 @@ export default function Calendar(){
     }
 
     const searchDoctorsDaysAvaiable = async () => {
-        const result: DoctorAvaiableDayType[] = await getAllDaysAvaiable(doctorId);
+        const result: DoctorAvaiableDayType[] = await getAllDaysAvaiable();
         const filteredResult: DoctorAvaiableDayType[] = result.filter(availableDay => availableDay.doctor.id === doctorId);
         const dates = filteredResult.map(data => new Date(`${data.date}T12:00:00Z`));
         dates.sort((a, b) => {

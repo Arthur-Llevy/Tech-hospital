@@ -7,10 +7,6 @@ import { useCookies } from "react-cookie";
 export default function Header() {
     const [cookies, , removeCookies] = useCookies(["token"]);
     const [isClient, setIsClient] = useState(false);
-
-    const logout = () => {
-        removeCookies("token");
-    }
   
     useEffect(() => {
       setIsClient(true);
@@ -22,7 +18,6 @@ export default function Header() {
             {isClient && cookies.token !== undefined && cookies.token !== "" && 
                 <Button 
                     className="bg-white text-black  w-24 h-9 font-bold"
-                    onClick={logout}
                 >Sair</Button>
             }
         </header>
