@@ -98,7 +98,7 @@ export default function FindAppointment() {
                 form.setValue("patientName", result.name);
                 form.setValue("patientAge", result.age.toString());
                 form.setValue("patientBirthDate", formatDateFromDatabaseToInterface(result.birth_Date));
-                form.setValue("patientGender", result.gender === "Masculino" ? 0 : 1);
+                form.setValue("patientGender", result.gender === "Masculine" ? 0 : 1);
                 form.setValue("patientObservations", result.observations);
             } else {
                 setIsPatientRegistred(false);
