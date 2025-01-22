@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+[PORTUGUÊS]
 
-## Getting Started
+# Tech Hospital
+O Tech Hospital é uma uma solução que pensei para um problema que passei enquanto tentava marcar uma consulta em um hospital público. <br>
+Mesmo indo presencialmente para o hospital e ligando para obter informações, não sabia qual em qual data teria que ir para marcar uma consulta para um médico em específico e também não tinham previsões de quando teriam datas disponíveis. Para isso, criei esta solução. 
 
-First, run the development server:
+## Funcionalides
+- Pacientes do hospital podem consultar em quais datas e horários os médicos estarão disponíveis
+- Os pacientes podem visualizar como está o andamento de alguma solicitação de consulta, exame, entre outros, podendo ver qual médico será responsável, qual data, se está agendado ou indeferido, entre outras informações
+- Os médicos possuem sua área para o registro de datas e horas disponíveis
+- A administração do hospital possui sua área para a marcação de exames e outros procedimentos oferecidos pelo hospital
 
+## Mídias do projeto
+Página inicial <br>
+![Tela inicial](./docsMedia/initialPage.png) <br><br>
+Tela de calendário de datas <br>
+![Tela de calendário](./docsMedia/calendarPage.png) <br><br>
+Tela de consulta <br>
+![Tela de consultas](./docsMedia/appointmentPage.png) <br><br>
+Tela cadastramento de exames <br>
+![Tela registro de exames](./docsMedia/registerAppointment.png) <br><br>
+
+## Stack
+- TypeScript
+- Next.Js com ShadCn e TailwindCss
+
+## Como rodar o projeto
+1. Clone o projeto em seu local de preferência
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone git@github.com:Arthur-Llevy/Tech-hospital.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Baixe as dependências
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<br>
 
-## Learn More
+3. Rode o projeto
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+***Outros gerenciadores também podem ser utilizados para isso, como o yarn.***
+<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Obrigado pela atenção!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+[ENGLISH]
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#Technological Hospital
+Tech Hospital is a solution I thought of for a problem I had while trying to schedule an appointment at a public hospital. <br>
+Even though I went to the hospital in person and called to get information, I didn't know which data I would need to enter to schedule an appointment with a specific doctor and I also didn't know when the data would be available. That's why I created this solution.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Functionalities
+- Hospital patients can check the data and times when doctors will be available
+- Patients can view the progress of any request for an appointment, exam, among others, and can see which doctor is responsible, what data, whether it is scheduled or denied, among other information
+- Doctors have their own area to record data and available times
+- The hospital administration has its own area to schedule exams and other procedures offered by the hospital
+
+## Medias of the project
+Initial page <br>
+![Tela inicial](./docsMedia/initialPage.png) <br><br>
+Calendar page <br>
+![Tela de calendário](./docsMedia/calendarPage.png) <br><br>
+Exam consultation screen <br>
+![Tela de consultas](./docsMedia/appointmentPage.png) <br><br>
+Exam registration screen <br>
+![Tela registro de exames](./docsMedia/registerAppointment.png) <br><br>
+
+## Stack
+- TypeScript
+- Next.Js with ShadCn and TailwindCss
+
+## How to run the project
+1. Clone the project to your preferred location
+```bash
+git clone git@github.com:Arthur-Llevy/Tech-hospital.git
+```
+
+<br>
+
+2. Download the dependencies
+```bash
+npm install
+```
+
+<br>
+
+3. Run the project
+```bash
+npm run dev
+```
+
+***Other managers can also be used for this, such as yarn.***
+<br>
