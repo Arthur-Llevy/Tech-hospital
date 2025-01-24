@@ -2,7 +2,7 @@
 
 import { administratorLogin } from "@/app/services/techHospitalApi/api"
 import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -10,22 +10,15 @@ import { z } from "zod"
 import { useCookies } from "react-cookie"
 import { Card } from "@/components/ui/card"
 import Link from "next/link"
+import { formSchema } from "./utils"
+import { useState } from "react"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import axios from "axios"
 
 export default function AdministratorLogin() {
     const [, setCookies] = useCookies(["token"]);
-
-    const formSchema = z.object({
-        user: z.string({
-            message: "Preencha este campo."
-        }).min(2, {
-          message: "O usuário precisa ter no mínimo 3 caracteres.",
-        }),
-        password: z.string({
-            message: "Preencha este campo."
-        }).min(3, { 
-            message: "A senha precisa ter no mínimo 3 caracteres."
-        })
-    })
+    const [isPopupVisible, setIsPopupvisible] = useState<boolean>(false);
+    const [popupMessage, setPopupmessage] = useState<string>("");
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -33,7 +26,7 @@ export default function AdministratorLogin() {
             user: "",
             password: ""
         }
-    })
+    });
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
@@ -46,7 +39,19 @@ export default function AdministratorLogin() {
                 location.href = "/createAppointment";
             }
         } catch (error) {
-            console.log(error);
+            if (axios.isAxiosError(error) && error.response) {
+                if (error.response.status === 404) {
+                    setIsPopupvisible(true);
+                    setPopupmessage("Credenciais incorretas.");
+
+                    setTimeout(() => setIsPopupvisible(false), 3500);
+                } else if (error.response.status === 500) {
+                    setIsPopupvisible(true);
+                    setPopupmessage("Um erro ocorreu em nossos servidores. Por favor, tente novamente mais tarde.");
+
+                    setTimeout(() => setIsPopupvisible(false), 3500);
+                }
+            }
         }
     }
 
@@ -91,6 +96,14 @@ export default function AdministratorLogin() {
                     </form>
                 </Form>
             </Card>
+            {isPopupVisible && (
+                <Alert variant={"destructive"} className="w-11/12 my-8 mx-auto">
+                    <AlertTitle>Mensagem</AlertTitle>
+                    <AlertDescription>
+                        {popupMessage}
+                    </AlertDescription>
+                </Alert>
+            )}
         </div>
     )
 }
