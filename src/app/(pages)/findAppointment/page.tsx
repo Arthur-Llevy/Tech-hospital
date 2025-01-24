@@ -31,6 +31,7 @@ export default function FindExam(){
     const [popupMessage, setPopupmessage] = useState<string>("");
 
     const handleSubmit = async (id: number) => {
+        setAppointment(undefined);
         try {
             const result = await getAllAppointments(id);
             setAppointment(result);
@@ -77,13 +78,13 @@ export default function FindExam(){
                                     control={form.control}
                                     name="id"
                                     render={({ field }) => (
-                                    <FormItem>
-                                    <FormControl>
-                                        <Input type="number" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
+                                        <FormItem>
+                                        <FormControl>
+                                            <Input type="number" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                        </FormItem>
+                                    )}
                                 />
                                 <Button 
                                     type="submit"
@@ -97,7 +98,7 @@ export default function FindExam(){
                 </Card>
                 {isPopupVisible && (
                     <Alert variant={"destructive"} className="w-11/12 m-auto">
-                        <AlertTitle>Ops!</AlertTitle>
+                        <AlertTitle>Mensagem!</AlertTitle>
                         <AlertDescription>
                             {popupMessage}
                         </AlertDescription>

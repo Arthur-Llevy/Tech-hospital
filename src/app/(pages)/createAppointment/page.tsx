@@ -1,6 +1,6 @@
 "use client"
 
-import { administratorLogin, createNewAppointment, getAllDaysAvaiable, getAllDoctors, getPatientByCpf } from "@/app/services/techHospitalApi/api"
+import { administratorLogin, createNewAppointment, getAllDaysAvaiableById, getAllDoctors, getPatientByCpf } from "@/app/services/techHospitalApi/api"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
@@ -70,6 +70,8 @@ export default function FindAppointment() {
         }
     })
 
+    const { watch } = form;
+
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
             await createNewAppointment(cookies.token, isPatientRegistred, values)
@@ -84,7 +86,7 @@ export default function FindAppointment() {
     }
 
     const handleSearchDoctorsAvailableDays = async () => {
-        const result = await getAllDaysAvaiable();
+        const result = await getAllDaysAvaiableById(form.getValues("appointmentDoctorId"));
         setdoctorsDaysAvailable(result);
     }
 
@@ -108,8 +110,12 @@ export default function FindAppointment() {
 
     useEffect(() => {
         handleSearchDoctors();
-        handleSearchDoctorsAvailableDays();
     }, [])
+    
+    let doctorId = watch("appointmentDoctorId");
+    useEffect(() => {
+        handleSearchDoctorsAvailableDays();
+    }, [doctorId])
 
     return (
         <div>

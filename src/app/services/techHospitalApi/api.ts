@@ -21,8 +21,8 @@ const getAllDoctors = async () => {
     return result;
 }
 
-const getAllDaysAvaiable = async () => {
-    const result = await api.get(`/doctors-available-days/`);
+const getAllDaysAvaiableById = async (id: number) => {
+    const result = await api.get(`/doctors-available-days/${id}`);
 
     if (result.status !== 500) {
         return result.data;
@@ -118,4 +118,4 @@ const registerNewAvailableDay = async (token: string, data: any) => {
     return result;
 }
 
-export { getAllAppointments, getAllDoctors, getAllDaysAvaiable, administratorLogin, getPatientByCpf, createNewAppointment, doctorLogin, registerNewAvailableDay };
+export { getAllAppointments, getAllDoctors, getAllDaysAvaiableById, administratorLogin, getPatientByCpf, createNewAppointment, doctorLogin, registerNewAvailableDay };
